@@ -36,7 +36,7 @@ const slides: Slide[] = [
   },
   {
     title: "Every study clock is a mining clock",
-    subtitle: "Earn 0.01 points per class",
+    subtitle: "Earn points for early tune-ins",
     extraContent: (
       <div className="flex justify-center gap-20 mt-8">
         <div className="text-center">
@@ -51,7 +51,7 @@ const slides: Slide[] = [
     ),
     showPrevArrow: true,
     showNextArrow: true,
-    autoAdvance: true
+    
   },
 ];
 
