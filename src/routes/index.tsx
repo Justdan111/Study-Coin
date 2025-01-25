@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
-import HomePage from '../pages/homePage';
 import LoginPage from '../pages/loginPage';
+import OnboardingPage from '../pages/onboardingPage';
 
 
 interface RouteConfig {
@@ -12,7 +12,7 @@ interface RouteConfig {
 const routes: RouteConfig[] = [
   {
     path: '/',
-    element: <HomePage />,
+    element: <OnboardingPage />,
     errorElement: <>Not Found</>
   },
   {
