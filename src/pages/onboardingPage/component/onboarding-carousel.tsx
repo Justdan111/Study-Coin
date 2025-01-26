@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "../../../components/ui/button";
 
 interface Slide {
   title: string;
@@ -140,7 +141,7 @@ function NavigationArrows({ onPrevClick, onNextClick, showPrev, showNext }: Navi
           <img 
             src="images/leftarrow.png" 
             alt="left" 
-            className="w-6 h-6 object-contain" 
+            className="w-6 h-6 object-contain text-[#0066FF]" 
           />
         </button>
       ) : (
@@ -155,7 +156,7 @@ function NavigationArrows({ onPrevClick, onNextClick, showPrev, showNext }: Navi
           <img 
             src="images/rightarrow.png" 
             alt="arrow" 
-            className="w-8 h-8 object-contain" 
+            className="w-8 h-8 object-contain text-[#0066FF]" 
           />
         </button>
       )}
@@ -174,7 +175,7 @@ function DotNavigation({ totalDots, activeDot, onDotClick }: DotNavigationProps)
   return (
     <div className="flex justify-center mt-8">
       {Array.from({ length: totalDots }).map((_, index) => (
-        <button
+        <Button
           key={index}
           onClick={() => onDotClick(index)}
           className={`w-3 h-3 rounded-full mx-1 ${

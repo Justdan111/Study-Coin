@@ -1,8 +1,8 @@
 import { useState, FormEvent } from "react";
-import { Label } from "../../components/ui/Label";
+import { Label } from "../../components/ui/label";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
-import DesktopTitlebar from "../../components/header";
+
 
 interface LoginForm {
   email: string;
@@ -22,7 +22,7 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
-      <DesktopTitlebar pageTitle="Login" />
+     
       <div className="w-full max-w-xl space-y-8">
         <div className="text-center space-y-2">
           <h1 className="text-[#2E74E5] text-2xl md:text-2xl font-medium">
