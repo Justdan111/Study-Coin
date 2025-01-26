@@ -5,6 +5,8 @@ import Dashboard from '../pages/dashboardpage/sidebar/sidebar';
 import HomePage from '../pages/dashboardpage/homepage';
 import BookPage from '../pages/libraryPage/book';
 import Library from '../pages/libraryPage';
+import SignupPage from '../pages/signupPage';
+import OtpPage from '../pages/otpPage';
 
 
 interface RouteConfig {
@@ -22,24 +24,32 @@ const routes: RouteConfig[] = [
   },
   {
     path: '/login',
-    element: <LoginPage/>
+    element: <LoginPage />
+  },
+  {
+    path: '/signup',
+    element: <SignupPage />
+  },
+  {
+    path: '/otp',
+    element: <OtpPage />
   },
 
   {
     path: '/dashboard',
-    element: <Dashboard/>,
+    element: <Dashboard />,
     children: [
       {
         path: '',
-        element: <HomePage/>
+        element: <HomePage />
       },
       {
         path: 'library',
-        element: <Library/>
+        element: <Library />
       },
       {
         path: `book/:id`,
-        element: <BookPage/>
+        element: <BookPage />
       },
       {
         path: 'community',
@@ -55,7 +65,7 @@ const routes: RouteConfig[] = [
       },
     ]
   },
- 
+
 ];
 
 const router = createBrowserRouter(routes);
