@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import DesktopTitlebar from "../../../components/header";
 
 export default function BookPage() {
-  const { id } = useParams(); 
+  useParams(); 
   const [book, setBook] = useState<{ title: string; pdfUrl: string } | null>(null);
 
   useEffect(() => {
-    // this will fetch the book data from an API
+    
     
     const mockBook = {
       title: "Sample Book",
@@ -20,6 +21,8 @@ export default function BookPage() {
   }
 
   return (
+    <div>
+      <DesktopTitlebar pageTitle="My Library" />
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">{book.title}</h1>
       <iframe
@@ -27,6 +30,7 @@ export default function BookPage() {
         className="w-full h-screen"
         title={`PDF viewer for ${book.title}`}
       />
+    </div>
     </div>
   );
 }

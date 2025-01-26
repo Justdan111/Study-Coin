@@ -6,6 +6,10 @@ import HomePage from '../pages/dashboardpage/homepage';
 import BookPage from '../pages/libraryPage/book';
 import Library from '../pages/libraryPage';
 
+import QuestionPage from '../pages/communityPage/component/question';
+import CommunityPage from '../pages/communityPage';
+
+
 
 interface RouteConfig {
   path: string;
@@ -43,7 +47,13 @@ const routes: RouteConfig[] = [
       },
       {
         path: 'community',
-        element: <></>
+        element: <CommunityPage/>
+      },
+      {
+        path: 'questions/:id',
+        element: <QuestionPage params={{
+          id: undefined
+        }}  />
       },
       {
         path: 'store',
