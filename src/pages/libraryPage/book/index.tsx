@@ -6,8 +6,8 @@ export default function BookPage() {
   const [book, setBook] = useState<{ title: string; pdfUrl: string } | null>(null);
 
   useEffect(() => {
-    // In a real application, you would fetch the book data from an API
-    // For this example, we'll use mock data
+    // this will fetch the book data from an API
+    
     const mockBook = {
       title: "Sample Book",
       pdfUrl: "/sample-book.pdf",
