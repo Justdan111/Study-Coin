@@ -3,6 +3,7 @@ import { Trophy, Medal } from "lucide-react";
 import { LeaderboardUser } from "../types";
 import { Avatar, AvatarFallback, AvatarImage } from "../../../components/ui/avatar";
 import { Badge } from "../../../components/ui/badge";
+import TrophyIcon from "../../../components/icons/trophyicon";
 
 interface LeaderboardProps {
   initialUsers: LeaderboardUser[];
@@ -13,54 +14,61 @@ export function Leaderboard({ initialUsers }: LeaderboardProps) {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // Simulate data change by shuffling the users array
       const shuffledUsers = [...users].sort(() => Math.random() - 0.5);
       setUsers(shuffledUsers);
     }, 3000);
 
-    return () => clearInterval(interval); 
+    return () => clearInterval(interval);
   }, [users]);
 
   return (
-    <div className="rounded-lg border p-4">
-      <div className="flex items-center gap-2">
-        <Trophy className="h-5 w-5 text-yellow-500" />
-        <h2 className="text-lg font-semibold">Leaderboard</h2>
+    <div className="rounded-lg border bg-white shadow p-6 w-96">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-xl font-semibold text-gray-800">Leaderboard</h2>
+        <TrophyIcon size="8" />
       </div>
-      <div className="mt-4 space-y-4">
-        {users.map((user) => (
-          <div key={user.id} className="flex items-center gap-3">
-            <div className="flex h-8 w-8 items-center justify-center">
-              {user.rank === 1 ? (
+
+      {/* Leaderboard Cards */}
+      <div className="space-y-4">
+        {users.map((user, index) => (
+          <div
+            key={user.id}
+            className="flex items-center justify-between p-4 rounded-lg border shadow-sm bg-gray-50 hover:shadow-md transition-shadow"
+          >
+            {/* Rank */}
+            <div className="flex items-center gap-4">
+              {/* Avatar and Name */}
+              <Avatar className="h-12 w-12">
+                <AvatarImage src={user.avatar} alt={user.name} />
+                <AvatarFallback>{user.name[0]}</AvatarFallback>
+              </Avatar>
+              <div>
+                <h3 className="text-gray-800 font-medium">{user.name}</h3>
+                <div className="flex flex-row gap-2 items-center justify-center">
+                  <span className="text-lg font-semibold text-blue-600">{user.points} pts</span>
+                  <span className="text-gray-300 text-sm">•</span>
+                  <span className="text-sm text-gray-500">{user.questionsAnswered} answers</span>
+                </div>
+                {/* <Badge variant="outline" className="text-xs">{user.role}</Badge> */}
+              </div>
+            </div>
+
+            {/* Points */}
+            {/* <div className="flex flex-col items-end">
+              
+            </div> */}
+
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-200 text-gray-800 font-bold text-lg">
+              {index + 1 === 1 ? (
                 <Medal className="h-6 w-6 text-yellow-500" />
-              ) : user.rank === 2 ? (
+              ) : index + 1 === 2 ? (
                 <Medal className="h-6 w-6 text-gray-400" />
-              ) : user.rank === 3 ? (
+              ) : index + 1 === 3 ? (
                 <Medal className="h-6 w-6 text-amber-700" />
               ) : (
-                <span className="text-sm font-medium text-muted-foreground">{user.rank}</span>
+                <span>{index + 1}</span>
               )}
-            </div>
-            <Avatar className="h-10 w-10">
-              <AvatarImage src={user.avatar} alt={user.name} />
-              <AvatarFallback>{user.name[0]}</AvatarFallback>
-            </Avatar>
-            <div className="flex-1">
-              <div className="flex items-center gap-2">
-                <span className="font-medium">{user.name}</span>
-                <Badge variant="outline" className="text-xs">
-                  {user.role}
-                </Badge>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <span>{user.points} points</span>
-                <span>•</span>
-                <span>{user.questionsAnswered} answers</span>
-              </div>
-            </div>
-            <div className="text-right">
-              <span className="text-sm font-medium text-blue-600">+{user.helpfulVotes}</span>
-              <p className="text-xs text-muted-foreground">helpful votes</p>
             </div>
           </div>
         ))}

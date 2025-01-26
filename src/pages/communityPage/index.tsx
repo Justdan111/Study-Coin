@@ -82,21 +82,23 @@ export default function CommunityPage() {
   return (
     <div>
       <DesktopTitlebar pageTitle={"Our Community"} />
-    <div className="mx-auto max-w-7xl px-4 py-8">
-      <div className="mb-8 flex items-center gap-4">
-       
-        
-        <CreateQuestionDialog />
-      </div>
-      <div className="grid gap-8 md:grid-cols-[1fr_300px]">
-        <div className="space-y-4">
-          {SAMPLE_QUESTIONS.map((question) => (
-            <QuestionCard key={question.id} question={question} />
-          ))}
+      <div className="w-full flex flex-row px-4 py-8 gap-8">
+        <div className="w-full">
+          <div className="mb-8 flex items-center gap-4">
+            <CreateQuestionDialog />
+          </div>
+          <div className="">
+            <div className="space-y-4 w-full">
+              {SAMPLE_QUESTIONS.map((question) => (
+                <QuestionCard key={question.id} question={question} />
+              ))}
+            </div>
+          </div>
         </div>
-        <Leaderboard initialUsers={SAMPLE_LEADERBOARD} />
+        <div className="">
+          <Leaderboard initialUsers={SAMPLE_LEADERBOARD} />
+        </div>
       </div>
-    </div>
     </div>
   )
 }

@@ -153,7 +153,7 @@ const QuestionPage: React.FC<QuestionPageProps> = ({ params = {} }) => {
         Back
       </button>
       </div>
-    <div className="mx-auto max-w-3xl px-4 py-8">
+    <div className="w-full px-4 py-8">
       
       
       {/* Question Section */}
