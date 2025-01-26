@@ -8,6 +8,7 @@ import Library from '../pages/libraryPage';
 
 import QuestionPage from '../pages/communityPage/component/question';
 import CommunityPage from '../pages/communityPage';
+import Store from '../pages/storePage';
 
 
 
@@ -57,7 +58,7 @@ const routes: RouteConfig[] = [
       },
       {
         path: 'store',
-        element: <></>
+        element: <Store/>
       },
       {
         path: 'settings',
