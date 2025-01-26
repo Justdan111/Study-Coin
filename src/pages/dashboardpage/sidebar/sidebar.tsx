@@ -41,7 +41,7 @@ export default function DashboardLayout() {
   )
 
   const DesktopSidebar = () => (
-    <div className="w-64 border-r h-full">
+    <div className="w-72 border-r h-full">
       <div className="p-4">
         <h2 className="text-xl font-bold mb-6 text-[#2E74E5]">Learnit</h2>
         <nav className="space-y-2 mt-8">
