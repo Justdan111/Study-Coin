@@ -8,7 +8,7 @@ interface BookItemProps {
 
 export default function BookItem({ book }: BookItemProps) {
   return (
-    <Link to={`/book/${book.id}`} className="block">
+    <Link to={`/dashboard/book/${book.id}`} className="block">
       <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105">
         <img
           src={book.coverImage || "/placeholder.svg"}

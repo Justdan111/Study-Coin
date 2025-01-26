@@ -8,6 +8,11 @@ import Library from '../pages/libraryPage';
 import SignupPage from '../pages/signupPage';
 import OtpPage from '../pages/otpPage';
 
+import QuestionPage from '../pages/communityPage/component/question';
+import CommunityPage from '../pages/communityPage';
+import Store from '../pages/storePage';
+
+
 
 interface RouteConfig {
   path: string;
@@ -53,11 +58,17 @@ const routes: RouteConfig[] = [
       },
       {
         path: 'community',
-        element: <></>
+        element: <CommunityPage/>
+      },
+      {
+        path: 'questions/:id',
+        element: <QuestionPage params={{
+          id: undefined
+        }}  />
       },
       {
         path: 'store',
-        element: <></>
+        element: <Store/>
       },
       {
         path: 'settings',
