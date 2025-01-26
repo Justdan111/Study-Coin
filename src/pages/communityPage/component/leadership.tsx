@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { Trophy, Medal } from "lucide-react";
+import { Medal } from "lucide-react";
 import { LeaderboardUser } from "../types";
 import { Avatar, AvatarFallback, AvatarImage } from "../../../components/ui/avatar";
-import { Badge } from "../../../components/ui/badge";
 import TrophyIcon from "../../../components/icons/trophyicon";
 
 interface LeaderboardProps {
