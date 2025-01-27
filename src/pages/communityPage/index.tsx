@@ -76,14 +76,65 @@ const SAMPLE_LEADERBOARD: LeaderboardUser[] = [
     helpfulVotes: 445,
     rank: 3,
   },
-]
+  {
+    id: "4",
+    name: "John Doe",
+    avatar: "/placeholder.svg",
+    role: "teacher",
+    points: 1200,
+    questionsAnswered: 150,
+    helpfulVotes: 800,
+    rank: 4,
+  },
+  {
+    id: "5",
+    name: "Sarah Wilson",
+    avatar: "/placeholder.svg",
+    role: "student",
+    points: 1105,
+    questionsAnswered: 100,
+    helpfulVotes: 650,
+    rank: 5,
+  },
+  {
+    id: "6",
+    name: "David Lee",
+    avatar: "/placeholder.svg",
+    role: "student",
+    points: 1050,
+    questionsAnswered: 90,
+    helpfulVotes: 710,
+    rank: 6,
+  },
+  {
+    id: "7",
+    name: "Olivia Martinez",
+    avatar: "/placeholder.svg",
+    role: "teacher",
+    points: 1300,
+    questionsAnswered: 180,
+    helpfulVotes: 920,
+    rank: 7,
+  },
+  {
+    id: "8",
+    name: "James Brown",
+    avatar: "/placeholder.svg",
+    role: "student",
+    points: 950,
+    questionsAnswered: 85,
+    helpfulVotes: 500,
+    rank: 8,
+  },
+  
+];
 
 export default function CommunityPage() {
   return (
     <div>
       <DesktopTitlebar pageTitle={"Our Community"} />
-      <div className="w-full flex flex-row px-4 py-8 gap-8">
-        <div className="w-full">
+      <div className="w-full flex flex-row px-4 py-8 gap-8 h-full flex-1">
+        <div className="w-full h-full flex-1">
           <div className="mb-8 flex items-center gap-4">
             <CreateQuestionDialog />
           </div>
@@ -95,7 +146,7 @@ export default function CommunityPage() {
             </div>
           </div>
         </div>
-        <div className="">
+        <div className="overflow-y-auto flex-1">
           <Leaderboard initialUsers={SAMPLE_LEADERBOARD} />
         </div>
       </div>
