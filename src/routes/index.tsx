@@ -80,6 +80,10 @@ const routes: RouteConfig[] = [
         element: <Store />
       },
       {
+        path: 'earn',
+        element: <></>
+      },
+      {
         path: 'settings',
         element: <></>
       },
