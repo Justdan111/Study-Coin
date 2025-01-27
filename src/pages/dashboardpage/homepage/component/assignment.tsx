@@ -2,20 +2,32 @@ import { ArrowLeft, ChevronDown } from 'lucide-react';
 import DesktopTitlebar from '../../../../components/header';
 import { useState } from 'react';
 
+interface AssignmentPageForm {
+    title: string;
+    description: string;
+    assignment: File | null;
+}
+
 const AssignmentPage = () => {
     const handleGoBack = () => {
         window.history.back();
     };
 
-    const assignments = [
+    const [assignments, setAssignments] = useState([
         { id: 1, title: 'Algebra Basics', description: 'Introduction to Algebra', url: 'http://example.com/algebra', status: 'Pending', createdAt: '2025-01-01', updatedAt: '2025-01-02' },
         { id: 2, title: 'Periodic Table', description: 'Learn the elements', url: 'http://example.com/chemistry', status: 'Completed', createdAt: '2025-01-02', updatedAt: '2025-01-03' },
-    ];
+    ]);
 
     const [searchQuery, setSearchQuery] = useState('');
     const [modalOpen, setModalOpen] = useState(false);
-    const [formData, setFormData] = useState({ title: '', description: '', image: null });
+    const [formData, setFormData] = useState<AssignmentPageForm>({
+        title: '',
+        description: '',
+        assignment: null,
+    });
     const [filterOpen, setFilterOpen] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+    const [loading, setLoading] = useState(false);
 
     const filteredAssignments = assignments.filter((assignment) =>
         ['title', 'description', 'url', 'status', 'createdAt', 'updatedAt']
@@ -46,10 +58,42 @@ const AssignmentPage = () => {
         }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
-        setModalOpen(false);
+        setLoading(true);
+        setError(null);
+
+        // Simulate submission process
+        try {
+            // Simulate an API call
+            const newAssignment = {
+                id: assignments.length + 1,
+                title: formData.title,
+                description: formData.description,
+                url: 'http://example.com/new-assignment', // Placeholder URL
+                status: 'Pending',
+                createdAt: new Date().toISOString().split('T')[0],
+                updatedAt: new Date().toISOString().split('T')[0],
+            };
+
+            // Simulate server response delay
+            await new Promise((resolve) => setTimeout(resolve, 1000));
+
+            // Add new assignment to the list
+            setAssignments((prev) => [...prev, newAssignment]);
+            setModalOpen(false);
+
+            // Clear form data
+            setFormData({
+                title: '',
+                description: '',
+                assignment: null,
+            });
+        } catch (err) {
+            setError('Failed to submit the assignment. Please try again.');
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -168,7 +212,7 @@ const AssignmentPage = () => {
                                 ></textarea>
                             </div>
                             <div className="mb-4">
-                                <label className="block text-sm font-medium mb-1">Upload Image</label>
+                                <label className="block text-sm font-medium mb-1">Upload File</label>
                                 <input
                                     type="file"
                                     name="image"
@@ -181,8 +225,8 @@ const AssignmentPage = () => {
                                 <button type="button" onClick={() => setModalOpen(false)} className="px-4 py-2 bg-gray-200 rounded">
                                     Cancel
                                 </button>
-                                <button type="submit" className="px-4 py-2 bg-blue-600 text-white rounded">
-                                    Submit
+                                <button type="submit" className={`px-4 py-2 ${loading ? 'bg-gray-400' : 'bg-blue-600'} text-white rounded`} disabled={loading}>
+                                    {loading ? 'Submitting...' : 'Submit'}
                                 </button>
                             </div>
                         </form>
