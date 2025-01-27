@@ -19,7 +19,7 @@ export default function DashboardLayout() {
   const isDesktop = useMediaQuery('(min-width: 768px)');
   const location = useLocation();
 
-  const NavItems = ({ closeSidebar }) => (
+  const NavItems = ({ closeSidebar }: { closeSidebar: () => void }) => (
     <>
       {NAV_ITEMS.map((item) => (
         <Button
