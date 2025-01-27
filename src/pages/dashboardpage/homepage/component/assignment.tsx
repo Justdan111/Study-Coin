@@ -100,7 +100,7 @@ const AssignmentPage = () => {
     };
 
     return (
-        <div>
+        <div className="p-4">
             <DesktopTitlebar pageTitle={'Your Assignments'} />
             <div className="mt-2">
                 <button
@@ -113,25 +113,25 @@ const AssignmentPage = () => {
             </div>
 
             {/* Toolbar */}
-            <div className="flex items-center gap-4 px-4 mb-6">
+            <div className="flex flex-col md:flex-row items-center gap-4 mb-6">
                 <input
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search assignments..."
-                    className="flex-1 px-4 py-2 border border-gray-300 rounded-lg"
+                    className="flex-1 w-full md:w-auto px-4 py-2 border border-gray-300 rounded-lg"
                 />
 
-                <div className="relative">
+                <div className="relative w-full md:w-auto">
                     <button
-                        className="flex items-center px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-100"
+                        className="flex items-center justify-between w-full md:w-auto px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-100"
                         onClick={() => setFilterOpen((prev) => !prev)}
                     >
                         Filter
                         <ChevronDown className="ml-2 h-4 w-4" />
                     </button>
                     {filterOpen && (
-                        <div className="absolute mt-2 w-48 bg-white border rounded-lg shadow-lg">
+                        <div className="absolute mt-2 w-full md:w-48 bg-white border rounded-lg shadow-lg">
                             <ul className="py-2">
                                 <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Status: Completed</li>
                                 <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Status: Pending</li>
@@ -143,14 +143,14 @@ const AssignmentPage = () => {
                 </div>
                 <button
                     onClick={() => setModalOpen(true)}
-                    className="px-4 py-2 bg-blue-600 text-white rounded-lg"
+                    className="w-full md:w-auto px-4 py-2 bg-blue-600 text-white rounded-lg"
                 >
                     Upload Assignment
                 </button>
             </div>
 
             {/* Assignments Table */}
-            <div className="w-full px-4 py-8 overflow-x-auto">
+            <div className="w-full overflow-x-auto">
                 <table className="min-w-full table-auto">
                     <thead>
                         <tr className="bg-white text-black text-sm font-light">
@@ -192,7 +192,7 @@ const AssignmentPage = () => {
             {/* Modal */}
             {modalOpen && (
                 <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex justify-center items-center">
-                    <div className="bg-white rounded-lg shadow-lg p-6 w-1/3 relative z-10">
+                    <div className="bg-white rounded-lg shadow-lg p-6 w-full md:w-1/3 relative z-10">
                         <h2 className="text-lg font-semibold mb-4">Upload Assignment</h2>
                         <form onSubmit={handleSubmit}>
                             <div className="mb-4">

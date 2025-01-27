@@ -12,6 +12,7 @@ import QuestionPage from '../pages/communityPage/component/question';
 import CommunityPage from '../pages/communityPage';
 import Store from '../pages/storePage';
 import AssignmentPage from '../pages/dashboardpage/homepage/component/assignment';
+import Settings from '../pages/settingsPage';
 
 
 
@@ -85,7 +86,7 @@ const routes: RouteConfig[] = [
       },
       {
         path: 'settings',
-        element: <></>
+        element: <Settings/>
       },
     ]
   },

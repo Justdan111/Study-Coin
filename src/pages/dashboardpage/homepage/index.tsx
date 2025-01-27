@@ -9,6 +9,7 @@ import { LeaderboardUser } from "../../communityPage/types";
 
 export default function HomePage() {
   const [filter, setFilter] = useState("today");
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Get today's date in a readable format
   const today = new Date().toLocaleDateString("en-US", {
@@ -19,6 +20,10 @@ export default function HomePage() {
 
   const handleFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setFilter(e.target.value);
+  };
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
   };
 
   const SAMPLE_LEADERBOARD: LeaderboardUser[] = [
@@ -153,6 +158,12 @@ export default function HomePage() {
               link="/dashboard/assignments"
             />
           </div>
+          <button
+          onClick={toggleSidebar}
+          className="fixed  right-4 bg-blue-500 text-white p-2 rounded-full md:hidden z-50"
+        >
+          {isSidebarOpen ? "Close" : "Leaderboard"}
+        </button>
 
           {/* Remaining Space Container */}
           <div className="flex-1 text-black py-6 flex flex-col">
@@ -188,7 +199,16 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-        <div className="w-full md:w-auto md:pt-6 overflow-y-auto">
+
+        {/* Sidebar Toggle Button for Mobile */}
+       
+
+        {/* Leaderboard Sidebar */}
+        <div
+          className={`fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out ${
+            isSidebarOpen ? "translate-x-0" : "translate-x-full"
+          } md:translate-x-0 md:relative md:w-auto md:pt-6 overflow-y-auto`}
+        >
           <Leaderboard initialUsers={SAMPLE_LEADERBOARD} />
         </div>
       </div>

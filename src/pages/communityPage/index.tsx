@@ -1,8 +1,12 @@
-import { CreateQuestionDialog } from "./component/createQuestion"
-import { QuestionCard } from "./component/questionCard"
-import { Leaderboard } from "./component/leadership"
-import { LeaderboardUser, Question } from "./types"
-import DesktopTitlebar from "../../components/header"
+import { useState } from "react";
+import { CreateQuestionDialog } from "./component/createQuestion";
+import { QuestionCard } from "./component/questionCard";
+import { Leaderboard } from "./component/leadership";
+import { LeaderboardUser, Question } from "./types";
+import DesktopTitlebar from "../../components/header";
+import { Trophy, X } from "lucide-react";
+import { Button } from "../../components/ui/button";
+
 
 const SAMPLE_QUESTIONS: Question[] = [
   {
@@ -130,6 +134,16 @@ const SAMPLE_LEADERBOARD: LeaderboardUser[] = [
 ];
 
 export default function CommunityPage() {
+  const [isLeaderboardVisible, setIsLeaderboardVisible] = useState(false);
+
+  const toggleLeaderboard = () => {
+    setIsLeaderboardVisible(!isLeaderboardVisible);
+  };
+
+  const closeLeaderboard = () => {
+    setIsLeaderboardVisible(false);
+  };
+
   return (
     <div className="w-full h-full">
       <DesktopTitlebar pageTitle={"Our Community"} />
@@ -150,10 +164,32 @@ export default function CommunityPage() {
           </div>
         </div>
   
+        {/* Trophy Icon for Mobile */}
+        <div className="fixed  right-4 md:hidden">
+          <Button
+            onClick={toggleLeaderboard}
+            className="p-3 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 transition-colors"
+          >
+            <Trophy  size={24} />
+          </Button>
+        </div>
+
         {/* Leaderboard - full width on mobile, side panel on desktop */}
-        <div className="w-full md:w-80 overflow-y-auto">
+        <div
+          className={`fixed inset-y-0  md:w-80 overflow-y-auto right-0 w-80 bg-white shadow-lg transform transition-transform duration-300 ease-in-out ${
+            isLeaderboardVisible ? "translate-x-0" : "translate-x-full"
+          } md:translate-x-0 md:relative md:w-80 md:bg-transparent md:shadow-none`}
+        >
+           <Button
+            onClick={closeLeaderboard}
+            className="absolute top-2 right-4 p-2 mb-2  md:hidden"
+          >
+            <X  size={20} />
+          </Button>
+
           <Leaderboard initialUsers={SAMPLE_LEADERBOARD} />
         </div>
+        
       </div>
     </div>
   );
