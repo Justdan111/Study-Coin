@@ -54,7 +54,7 @@ export default function DashboardLayout() {
   const MobileSidebar = () => (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button variant="outline" size="icon" className="md:hidden">
+        <Button variant="outline" size="icon" className="md:hidden mt-7">
           <Menu className="h-4 w-4" />
         </Button>
       </SheetTrigger>

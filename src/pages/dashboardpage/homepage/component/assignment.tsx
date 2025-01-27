@@ -1,6 +1,9 @@
 import { ArrowLeft, ChevronDown } from 'lucide-react';
 import DesktopTitlebar from '../../../../components/header';
 import { useState } from 'react';
+import { Textarea } from '../../../../components/ui/textarea';
+import { Input } from '../../../../components/ui/input';
+import { Label } from '../../../../components/ui/label';
 
 interface AssignmentPageForm {
     title: string;
@@ -194,7 +197,7 @@ const AssignmentPage = () => {
                         <form onSubmit={handleSubmit}>
                             <div className="mb-4">
                                 <label className="block text-sm font-medium mb-1">Title</label>
-                                <input
+                                <Input
                                     type="text"
                                     name="title"
                                     value={formData.title}
@@ -203,17 +206,17 @@ const AssignmentPage = () => {
                                 />
                             </div>
                             <div className="mb-4">
-                                <label className="block text-sm font-medium mb-1">Description</label>
-                                <textarea
+                                <Label className="block text-sm font-medium mb-1">Description</Label>
+                                <Textarea
                                     name="description"
                                     value={formData.description}
                                     onChange={handleInputChange}
                                     className="w-full px-3 py-2 border rounded"
-                                ></textarea>
+                                ></Textarea>
                             </div>
                             <div className="mb-4">
-                                <label className="block text-sm font-medium mb-1">Upload File</label>
-                                <input
+                                <Label className="block text-sm font-medium mb-1">Upload File</Label>
+                                <Input
                                     type="file"
                                     name="image"
                                     accept="image/*"
