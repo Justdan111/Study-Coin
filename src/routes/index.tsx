@@ -11,6 +11,7 @@ import OtpPage from '../pages/otpPage';
 import QuestionPage from '../pages/communityPage/component/question';
 import CommunityPage from '../pages/communityPage';
 import Store from '../pages/storePage';
+import AssignmentPage from '../pages/dashboardpage/homepage/component/assignment';
 
 
 
@@ -49,6 +50,10 @@ const routes: RouteConfig[] = [
         element: <HomePage />
       },
       {
+        path: 'assignments',
+        element: <AssignmentPage />
+      },
+      {
         path: 'library',
         element: <Library />
       },
@@ -58,17 +63,17 @@ const routes: RouteConfig[] = [
       },
       {
         path: 'community',
-        element: <CommunityPage/>
+        element: <CommunityPage />
       },
       {
         path: 'questions/:id',
         element: <QuestionPage params={{
           id: undefined
-        }}  />
+        }} />
       },
       {
         path: 'store',
-        element: <Store/>
+        element: <Store />
       },
       {
         path: 'settings',
