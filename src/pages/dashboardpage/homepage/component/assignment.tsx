@@ -29,7 +29,7 @@ const AssignmentPage = () => {
         assignment: null,
     });
     const [filterOpen, setFilterOpen] = useState(false);
-    const [error, setError] = useState<string | null>(null);
+    const [, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
 
     const filteredAssignments = assignments.filter((assignment) =>
