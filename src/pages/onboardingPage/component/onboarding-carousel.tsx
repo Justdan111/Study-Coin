@@ -14,7 +14,7 @@ interface Slide {
 
 const slides: Slide[] = [
   {
-    title: "Every task has a reward. \nWelcome to Learnit, where academic activities meet rewards",
+    title: "Every task has a reward. \nWelcome to Learnit, \nwhere academic activities meet rewards",
     showPrevArrow: false,
     showNextArrow: false,
     autoAdvance: true,
